@@ -30,3 +30,35 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+thismo = int(str(datetime.today())[5:7])
+
+if len(sys.argv) < 2:
+  calendar.prmonth(2020, thismo)
+  quit()
+
+mo = int(sys.argv[1])
+
+if len(sys.argv) == 2:
+  if 1 <= mo <=12:
+    calendar.prmonth(2020, mo)
+    quit()
+  elif mo < 1 or mo > 12:
+    print(
+      '''
+  Hey there slugger, go ahead and change that month number to between 1 and 12.
+      ''')
+    quit()
+
+yr = int(sys.argv[2])
+
+if 1 <= yr <=9999:
+    calendar.prmonth(yr, mo)
+    quit()
+elif yr < 1 or yr > 9999:
+    print(
+      '''
+  Hey there slugger, let's not go biblical in our timescale.
+  Change that year to between 1 and 9999.
+      ''')
+    quit()
